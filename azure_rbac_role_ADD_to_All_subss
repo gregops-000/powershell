@@ -1,0 +1,5 @@
+$subscriptions = Get-AzSubscription
+foreach ($subscription in $subscriptions) {
+   Set-AzContext -Subscription $subscription.Id
+   New-AzRoleAssignment -ApplicationId "XXXX-YYYYY-ZZZZZ-AAAAA-BBBBBB" -RoleDefinitionName "Reader" -Scope "/subscriptions/$($subscription.Id)"
+}
